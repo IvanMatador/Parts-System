@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -35,7 +34,4 @@ export class CartComponent implements OnInit {
       this.prodCount = +count;
     })
   }
-
-
-
 }

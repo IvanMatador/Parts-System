@@ -1,5 +1,4 @@
 import { MaterializeService } from './../../classes/materialize.service';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as M from 'materialize-css/dist/js/materialize';
 
@@ -45,10 +44,6 @@ export class CarouselComponent implements OnInit, AfterViewInit, AfterContentIni
     let instances = M.Modal.init(elems, {
       duration: 500
     });
-    //let elem = document.querySelector('.modal-trigger');
-    //alert(elem)
-    //let instance = M.Modal.getInstance(elem);
-    //instance.open();
   }
 
   click() {

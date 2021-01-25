@@ -10,7 +10,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {SorterTableModule} from './sorter-table/sorter-table.module';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { NavigationComponent } from './header/navigation/navigation.component';
@@ -59,7 +59,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { CartMainComponent } from './main/cart-main/cart-main.component';
-import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { AddCashPageComponent } from './pages/add-cash-page/add-cash-page.component';
@@ -70,7 +69,6 @@ import { ReferencePageComponent } from './pages/reference-page/reference-page.co
 import { QuitzPageComponent } from './pages/quitz-page/quitz-page.component';
 import { PropertiesPageComponent } from './pages/properties-page/properties-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { HomeComponent } from './main/home/home.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +83,6 @@ import { HomeComponent } from './main/home/home.component';
     CarouselComponent,
     SidebarComponent,
     CartComponent,
-    CatalogPageComponent,
     CartPageComponent,
     OrdersPageComponent,
     AddCashPageComponent,
@@ -96,7 +93,6 @@ import { HomeComponent } from './main/home/home.component';
     QuitzPageComponent,
     PropertiesPageComponent,
     NotFoundComponent,
-    HomeComponent
   ],
   exports: [
     A11yModule,
@@ -143,6 +139,8 @@ import { HomeComponent } from './main/home/home.component';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    MatFormFieldModule,
+    MatFormFieldModule,
   ],
   imports: [
     BrowserModule,
@@ -156,10 +154,12 @@ import { HomeComponent } from './main/home/home.component';
     BrowserAnimationsModule,
     FormsModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
-  entryComponents: [SorterTableModule],
-  providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }, 
+  entryComponents: [/* SorterTableModule */SorterTableComponent],
+  providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'legacy' } }, 
   { provide: HTTP_INTERCEPTORS,
    multi: true,
   useClass: TokenInterceptor}

@@ -12,7 +12,6 @@ import { ChangeColorService } from '../services/change-color.service';
 })
 export class HeaderComponent implements OnInit {
 
-  //prodCount: number;
   bgColor: string;
 
   @ViewChild(NavigationComponent) navigationComponent: NavigationComponent;
@@ -22,7 +21,6 @@ export class HeaderComponent implements OnInit {
   constructor(private changeColorService: ChangeColorService) { }
 
   ngOnInit(): void {
-    //this.prodCount = 2;
     this.changeColorService.color$.subscribe(color => this.bgColor = color)
   }
 

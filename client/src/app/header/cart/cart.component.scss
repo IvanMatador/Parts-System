@@ -1,11 +1,10 @@
 @import "variables";
 @import "mixins";
 
-.cart-button /* .material-icons */ {
+.cart-button {
   padding: 10px;
 
   @include respond-to($media_large) {
-   // transform: translateX(-50px);
   }
 }
 

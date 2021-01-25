@@ -1,10 +1,9 @@
-import { CartComponent } from './../../header/cart/cart.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Card } from './../../interfaces/card.interface';
 import { CartService } from '../../services/cart.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { stringify } from '@angular/compiler/src/util';
+import { MaterializeService } from 'src/app/classes/materialize.service';
 
 @Component({
   selector: 'app-cart-main',
@@ -16,7 +15,6 @@ export class CartMainComponent implements OnInit {
 
   displayedColumns: string[] = ['item', 'img', 'cost', 'quantity', 'totalCost', 'delete'];
 
-/*   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];*/
   dataSource: MatTableDataSource<Card[]>;
 
   @ViewChild(MatSort) sort: MatSort; 
@@ -33,35 +31,17 @@ export class CartMainComponent implements OnInit {
   }
 
   ngOnInit() {
-     
-    /* this.cartService.product$.subscribe(product => {
-      this.productId = product;
-    }); */
+
     if (this.getAllIds()) {
       this.getCountOfEqual(this.splitToArray(this.getAllIds()));
       this.fetchAllProductsById(this.getAllIds());
     }
-    
-    
   }
 
-
-
-
-/* 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
-
-*/
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   } 
-
-
-
-
 
   getTotalCost() {
     if (this.cardsByIds) {
@@ -80,16 +60,12 @@ export class CartMainComponent implements OnInit {
     this.cardsByIds.splice(idx, 1);
     let productId = localStorage.getItem('productId');
     
-    //console.log(productId);
     const arrFromIds = this.splitToArray(productId);
-    //console.log(arrFromIds)
     const newIdsArray = arrFromIds.filter(item => item != id);
-    //console.log(newIdsArray)
     let idForLocalStorage = newIdsArray[0];
     for (let i = 1; i < newIdsArray.length; i++) {
       idForLocalStorage += ':' + newIdsArray[i];
     }
-    //console.log(idForLocalStorage)
     if (idForLocalStorage) {
       localStorage.setItem('productId', idForLocalStorage);
     } else {
@@ -109,7 +85,7 @@ export class CartMainComponent implements OnInit {
       localStorage.setItem('prodsInCart', '0');
       this.cartService.setProductCount(0);
     }
-    
+    MaterializeService.toast('Товар успешно удален!')
   }
 
   getCount(id) {
@@ -117,7 +93,6 @@ export class CartMainComponent implements OnInit {
     if (findId) {
       return findId.count;
     }
-    //const card = 0
   }
 
   fetchProductsById(id) {
@@ -160,7 +135,6 @@ export class CartMainComponent implements OnInit {
   fetchAllProductsById(ids) {
     if (ids) {
       this.cartService.fetchAllProductsById(ids).subscribe(products => {
-        //console.log(products)
         this.cardsByIds = products;
       });
     }

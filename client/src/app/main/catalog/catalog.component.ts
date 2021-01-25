@@ -3,7 +3,7 @@ import { DiscountService } from './../../services/discount.service';
 import { Card } from './../../interfaces/card.interface';
 import { Component, OnInit } from '@angular/core';
 import { CatalogService } from 'src/app/services/catalog.srvice';
-import { MatTableDataSource } from '@angular/material/table';
+import { MaterializeService } from 'src/app/classes/materialize.service';
 
 @Component({
   selector: 'app-catalog',
@@ -51,7 +51,8 @@ export class CatalogComponent implements OnInit {
       localStorage.setItem("productId", allIds);
     } else {
       localStorage.setItem("productId", id);
-    }
+    };
+    MaterializeService.toast('Товар успешно добавлен в корзину!');
   }
 
   applyFilter(event: Event) {
