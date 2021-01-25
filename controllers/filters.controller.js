@@ -1,4 +1,4 @@
-const allUsers = require('../test_data');
+const allCards = require('../test_data');
 const momentum = require('moment');
 const { request } = require('express');
 
@@ -70,7 +70,7 @@ module.exports.getByParams = async function(req, res) {
       for (let i = 0; i < doubleArray.length; i++){
         const typeArr = [type[0]];
         if (doubleArray[i][0] == type[0]) {
-          const arrayFromAll = allUsers.filter(item => {
+          const arrayFromAll = allCards.filter(item => {
             const key = Object.keys(item);
             const val = Object.values(item);
             if (val.findIndex((elem, idx) => elem === doubleArray[i][1] && key[idx] === doubleArray[i][0]) !== -1) {
@@ -106,7 +106,7 @@ module.exports.getByParams = async function(req, res) {
     allEntriesIds.every(item => uniqEntrieIds.every(e => item.findIndex(i => i === e) !== -1));    
   
     uniqEntrieIds.map(item => {
-      const enter = allUsers.filter(i => i.idReport === item);
+      const enter = allCards.filter(i => i.idReport === item);
       filteredData.push(...enter);
     })
     
@@ -114,7 +114,7 @@ module.exports.getByParams = async function(req, res) {
       finalData = filteredData.filter(element => dateToMilliseconds(element.outputDate.date) >= dateValues.dateFrom
                                     && dateToMilliseconds(element.outputDate.date) <= dateValues.dateTo);
     } else if (dateValues.dateFrom > 0 && dateValues.dateTo > 0) {
-      finalData = allUsers.filter(element => dateToMilliseconds(element.outputDate.date) >= dateValues.dateFrom
+      finalData = allCards.filter(element => dateToMilliseconds(element.outputDate.date) >= dateValues.dateFrom
                                     && dateToMilliseconds(element.outputDate.date) <= dateValues.dateTo);
     }
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const users = require('./routes/users');
+const cards = require('./routes/cards');
 const filters = require('./routes/filters');
 const app = express();
 
@@ -8,7 +8,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use('/api/users', users);
+app.use('/api/cards', cards);
 app.use('/api/filters', filters);
 
 module.exports = app;

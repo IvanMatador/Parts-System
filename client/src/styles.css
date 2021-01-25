@@ -1,23 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~materialize-css/dist/css/materialize.min.css';
 html, 
 body { 
   min-height: 550px; 
 }
 
 body { 
-  height: 100%;
-  margin: 0; 
-  padding: 25px;
-  max-width: 1700px;
   font-family: Roboto, "Helvetica Neue", sans-serif; 
-  background: white no-repeat url('assets/images/warsaw.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.root {
-  height: 100%;
+  background-color: white;
 }
 
 html, body { height: 100%; }

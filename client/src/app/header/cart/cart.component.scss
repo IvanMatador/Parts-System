@@ -1,0 +1,26 @@
+@import "variables";
+@import "mixins";
+
+.cart-button /* .material-icons */ {
+  padding: 10px;
+
+  @include respond-to($media_large) {
+   // transform: translateX(-50px);
+  }
+}
+
+.material-icons {
+  font-size: 45px;
+}
+
+.mat-badge-content {
+  transform: translateX(20px);
+}
+
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  right: 0;
+}
+
+.mat-icon {
+  width: auto;
+}

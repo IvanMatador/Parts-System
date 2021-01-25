@@ -20,3 +20,19 @@ export interface User {
   },
   reportFormat: string
 } 
+
+export interface UserData {
+  publicationType: string;
+  termType: string;
+  reportGroup: string;
+  reportState: string;
+  reportFormat: string;
+  outputDate: string;
+  outputNumber: string;
+  res?: any;
+}
+
+export interface ValueAsObject {
+  value: string;
+  type: string[];
+}
